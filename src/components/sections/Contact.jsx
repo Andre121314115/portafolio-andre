@@ -40,7 +40,7 @@ const contactLinks = [
 ]
 
 // ⚠️ Reemplaza TU_ID_AQUI con tu ID de formspree.io
-const FORMSPREE_URL = 'https://formspree.io/f/TU_ID_AQUI'
+const FORMSPREE_URL = 'https://formspree.io/f/mnjbykpy'
 
 export default function Contact() {
   const { lang } = useLang()
