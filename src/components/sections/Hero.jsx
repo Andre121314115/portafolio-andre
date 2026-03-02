@@ -134,7 +134,7 @@ export default function Hero() {
         {/* Stats */}
         <div className="flex gap-8 mb-10 opacity-0 animate-[fadeUp_0.8s_ease_0.9s_forwards]">
           {[
-            { val: '3', label: lang === 'es' ? 'proyectos' : 'projects'   },
+            { val: '4', label: lang === 'es' ? 'proyectos' : 'projects'   },
             { val: '2', label: lang === 'es' ? 'empresas'  : 'companies'  },
             { val: '10', label: lang === 'es' ? 'ciclo'    : 'semester'   },
           ].map(s => (
