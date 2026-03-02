@@ -9,7 +9,7 @@ export default function Certificates() {
   const ref = useScrollFade()
 
   return (
-    <section id="certs" ref={ref} className="py-24 px-6 sm:px-16 bg-surface">
+    <section id="certs" ref={ref} className="py-28 px-6 sm:px-20 bg-surface">
       <SectionHeader num="06" title={lang === 'es' ? 'Certificados' : 'Certifications'} />
 
       <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">

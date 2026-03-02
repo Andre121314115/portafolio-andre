@@ -8,7 +8,7 @@ export default function Learning() {
   const { lang } = useLang()
   const ref = useScrollFade()
   return (
-    <section id="learning" ref={ref} className="py-24 px-6 sm:px-16 bg-bg">
+    <section id="learning" ref={ref} className="py-28 px-6 sm:px-20 bg-bg">
       <SectionHeader num="03" title={lang === 'es' ? 'Aprendiendo ahora' : 'Currently learning'} />
 
       <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">

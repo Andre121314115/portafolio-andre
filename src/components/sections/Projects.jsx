@@ -6,7 +6,7 @@ import ProjectModal from '@/components/ui/ProjectModal'
 import { useLang } from '@/context/LangContext'
 import { projects as allProjects } from '@/data/projects'
 
-const INTERVAL   = 2000   // ms entre slides
+const INTERVAL   = 3000   // ms entre slides
 const TRANSITION = 380    // ms de animación
 
 export default function Projects() {
@@ -74,7 +74,7 @@ export default function Projects() {
   )
 
   return (
-    <section id="projects" className="py-24 px-6 sm:px-16 bg-bg overflow-hidden">
+    <section id="projects" className="py-28 px-6 sm:px-20 bg-bg overflow-hidden">
       <SectionHeader num="04" title={lang === 'es' ? 'Proyectos' : 'Projects'} />
 
       <p className="font-mono text-xs text-muted mb-8">
@@ -130,7 +130,7 @@ export default function Projects() {
               <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/20 to-transparent
                               opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                 <span className="font-mono text-xs px-3 py-1
-                                 bg-gradient-to-r from-accent to-accent2 text-bg font-bold">
+                                 bg-gradient-to-r from-accent to-accent2/80 text-bg font-bold">
                   {lang === 'es' ? 'Ver detalles →' : 'View details →'}
                 </span>
               </div>
@@ -177,7 +177,7 @@ export default function Projects() {
               rel="noreferrer"
               onClick={e => e.stopPropagation()}
               className="inline-flex items-center gap-2 font-mono text-xs px-5 py-2 self-start
-                         bg-gradient-to-r from-accent to-accent2 text-bg font-bold
+                         bg-gradient-to-r from-accent to-accent2/80 text-bg font-bold
                          hover:opacity-90 transition-opacity
                          [clip-path:polygon(0_0,calc(100%-8px)_0,100%_8px,100%_100%,0_100%)]"
             >

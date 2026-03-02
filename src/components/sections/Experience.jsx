@@ -12,7 +12,7 @@ export default function Experience() {
   const toggle = i => setExpanded(p => ({ ...p, [i]: !p[i] }))
 
   return (
-    <section id="experience" ref={ref} className="py-24 px-6 sm:px-16 bg-bg">
+    <section id="experience" ref={ref} className="py-28 px-6 sm:px-20 bg-bg">
       <SectionHeader num="05" title={lang === 'es' ? 'Experiencia' : 'Experience'} />
 
       <div className="relative max-w-3xl">
@@ -41,7 +41,7 @@ export default function Experience() {
             {/* ── Dot en la línea — solo desktop ── */}
             <div className="hidden sm:block absolute left-[175px] top-[6px]
                             w-[11px] h-[11px] rounded-full
-                            bg-gradient-to-br from-accent to-accent2
+                            bg-gradient-to-br from-accent to-accent2/60
                             ring-4 ring-bg
                             shadow-[0_0_14px_rgba(0,229,160,0.5)]
                             z-10" />
@@ -55,7 +55,7 @@ export default function Experience() {
                               [clip-path:polygon(0_0,calc(100%-14px)_0,100%_14px,100%_100%,0_100%)]">
 
                 {/* Barra top en hover */}
-                <div className="h-[2px] bg-gradient-to-r from-accent to-accent2
+                <div className="h-[2px] bg-gradient-to-r from-accent to-accent2/60
                                 scale-x-0 group-hover:scale-x-100
                                 origin-left transition-transform duration-500" />
 

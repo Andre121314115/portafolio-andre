@@ -1,15 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
 
-// Layout
 import Navbar   from '@/components/layout/Navbar'
 import Footer   from '@/components/layout/Footer'
-
-// UI
 import Loader        from '@/components/ui/Loader'
 import CustomCursor  from '@/components/ui/CustomCursor'
-
-// Sections
 import Hero         from '@/components/sections/Hero'
 import About        from '@/components/sections/About'
 import Skills       from '@/components/sections/Skills'
@@ -23,33 +18,28 @@ export default function Page() {
   const [theme,      setTheme]      = useState('dark')
   const [loaderDone, setLoaderDone] = useState(false)
 
-  // Aplicar dark por defecto al montar
   useEffect(() => {
-    document.documentElement.classList.add('dark')
+    // Dark es el default, no hace falta clase extra (variables en :root son dark)
+    document.documentElement.classList.remove('light')
   }, [])
 
   const toggleTheme = () => {
     setTheme(t => {
       const next = t === 'dark' ? 'light' : 'dark'
-      // Añade o quita la clase 'dark' en <html>
-      // Tailwind + las variables CSS hacen el resto automáticamente
-      document.documentElement.classList.toggle('dark', next === 'dark')
+      if (next === 'light') {
+        document.documentElement.classList.add('light')
+      } else {
+        document.documentElement.classList.remove('light')
+      }
       return next
     })
   }
 
   return (
     <>
-      {/* Cursor personalizado (solo desktop) */}
       <CustomCursor />
-
-      {/* Loader */}
       {!loaderDone && <Loader onDone={() => setLoaderDone(true)} />}
-
-      {/* Navegación */}
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-
-      {/* Contenido */}
       <main>
         <Hero />
         <About />
@@ -60,10 +50,7 @@ export default function Page() {
         <Certificates />
         <Contact />
       </main>
-
       <Footer />
-
-      {/* Botón volver arriba */}
       <BackTop />
     </>
   )

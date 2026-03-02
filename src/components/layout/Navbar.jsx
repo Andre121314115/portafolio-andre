@@ -89,7 +89,7 @@ export default function Navbar({ theme, toggleTheme }) {
           <button
             onClick={toggleTheme}
             className="w-9 h-9 border border-border text-muted text-sm
-                       hover:border-accent2 hover:text-accent2 transition-all duration-200"
+                       hover:border-accent/60 hover:text-muted transition-all duration-200"
           >
             {theme === 'dark' ? '○' : '●'}
           </button>

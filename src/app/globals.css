@@ -4,26 +4,26 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap');
 
-/* ── TEMA CLARO ── */
+/* ── TEMA OSCURO (default) ── */
 :root {
-  --bg:      #f0f4ff;
-  --surface: #ffffff;
-  --border:  #c0cae8;
-  --text:    #0f0f2e;
-  --muted:   #4a5880;
+  --bg:      #080810;
+  --surface: #0d0d1a;
+  --border:  #1a1a38;
+  --text:    #e8eaf6;
+  --muted:   #5a6a9a;
   --accent:  #00e5a0;
-  --accent2: #a855f7;
+  --accent2: #00b87a;
 }
 
-/* ── TEMA OSCURO ── */
-.dark {
-  --bg:      #010108;
-  --surface: #0c0c1d;
-  --border:  #1a1a3e;
-  --text:    #e8eaf6;
-  --muted:   #6b7db3;
-  --accent:  #00e5a0;
-  --accent2: #a855f7;
+/* ── TEMA CLARO ── */
+.light {
+  --bg:      #f4f7ff;
+  --surface: #ffffff;
+  --border:  #d0d8f0;
+  --text:    #0d0d2e;
+  --muted:   #5a6890;
+  --accent:  #00a86b;
+  --accent2: #007a4d;
 }
 
 html  { scroll-behavior: smooth; }
@@ -35,28 +35,22 @@ body {
   transition:       background-color 0.4s, color 0.4s;
 }
 
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar       { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-/* ── CURSOR ── */
 @media (pointer: fine) { * { cursor: none !important; } }
 
-/* ── NOISE TEXTURE ── */
 .hero-noise::after {
   content: '';
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.2;
 }
 
-/* ── GRADIENT BORDER on cards ── */
-.card-glow {
-  position: relative;
-}
+.card-glow { position: relative; }
 .card-glow::before {
   content: '';
   position: absolute;
@@ -67,13 +61,12 @@ body {
   transition: opacity 0.4s;
   z-index: 0;
 }
-.card-glow:hover::before { opacity: 0.25; }
+.card-glow:hover::before { opacity: 0.12; }
 .card-glow > * { position: relative; z-index: 1; }
 
-/* ── KEYFRAMES ── */
 @keyframes pulseGlow {
-  0%,100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.5; }
-  50%      { transform: translate(-50%,-50%) scale(1.15); opacity: 0.9; }
+  0%,100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.35; }
+  50%      { transform: translate(-50%,-50%) scale(1.12); opacity: 0.65; }
 }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 @keyframes scrollLine {
@@ -83,7 +76,7 @@ body {
   100% { transform:scaleY(0); transform-origin:bottom; }
 }
 @keyframes fadeUp {
-  from { opacity:0; transform:translateY(28px); }
+  from { opacity:0; transform:translateY(24px); }
   to   { opacity:1; transform:translateY(0); }
 }
 @keyframes fadeIn {
@@ -95,7 +88,6 @@ body {
   50%      { background-position: 100% 50%; }
 }
 
-/* ── GRADIENT TEXT ── */
 .gradient-text {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   -webkit-background-clip: text;
@@ -103,67 +95,47 @@ body {
   background-clip: text;
 }
 
-/* ── ANIMATED GRADIENT BORDER ── */
 .border-animated {
   background: linear-gradient(var(--surface), var(--surface)) padding-box,
-              linear-gradient(135deg, var(--accent), var(--accent2), var(--accent)) border-box;
+              linear-gradient(135deg, var(--accent), var(--accent2)) border-box;
   border: 1px solid transparent;
   background-size: 200% 200%;
   animation: gradientShift 4s ease infinite;
 }
 
-/* ── BOTONES — transiciones ───────────────────────────── */
 a, button {
   transition-property: color, background-color, border-color, opacity, transform, box-shadow;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── NAVBAR — sombra al hacer scroll ──────────────────── */
 .navbar-scrolled {
-  box-shadow: 0 1px 40px rgba(0, 229, 160, 0.05);
+  box-shadow: 0 1px 40px rgba(0, 229, 160, 0.04);
 }
-/* ── MICROINTERACCIONES ─────────────────────────────────── */
 
-/* Focus visible para accesibilidad */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
-/* Selección de texto */
 ::selection {
-  background: rgba(0, 229, 160, 0.2);
+  background: rgba(0, 229, 160, 0.15);
   color: var(--accent);
 }
 
-/* Transición global de imágenes */
 img {
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1),
-              filter 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), filter 0.3s ease;
 }
 
-/* Tags / badges hover */
-.tag-item {
-  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
-}
-.tag-item:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+.tag-item { transition: border-color 0.2s, color 0.2s, background-color 0.2s; }
+.tag-item:hover { border-color: var(--accent); color: var(--accent); }
 
-/* Smooth reveal — usado por useScrollFade */
-[data-fade] {
-  will-change: opacity, transform;
-}
+[data-fade] { will-change: opacity, transform; }
 
-/* Línea de progreso del carrusel */
 @keyframes progressBar {
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
 }
-
-/* Keyframes del carrusel */
 @keyframes slideInRight {
   from { opacity: 0; transform: translateX(50px); }
   to   { opacity: 1; transform: translateX(0); }
@@ -172,4 +144,3 @@ img {
   from { opacity: 0; transform: translateX(-50px); }
   to   { opacity: 1; transform: translateX(0); }
 }
-

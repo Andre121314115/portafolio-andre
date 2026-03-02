@@ -40,7 +40,7 @@ const contactLinks = [
 ]
 
 // ⚠️ Reemplaza TU_ID_AQUI con tu ID de formspree.io
-const FORMSPREE_URL = 'https://formspree.io/f/mnjbykpy'
+const FORMSPREE_URL = 'https://formspree.io/f/TU_ID_AQUI'
 
 export default function Contact() {
   const { lang } = useLang()
@@ -71,7 +71,7 @@ export default function Contact() {
                       outline-none focus:border-accent transition-colors placeholder:text-muted`
 
   return (
-    <section id="contact" ref={ref} className="py-24 px-6 sm:px-16 bg-surface">
+    <section id="contact" ref={ref} className="py-28 px-6 sm:px-20 bg-surface">
       <SectionHeader num="07" title={t('Contacto', 'Contact')} />
 
       <div className="grid md:grid-cols-2 gap-16 items-start">

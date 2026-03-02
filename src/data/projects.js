@@ -5,9 +5,52 @@
 // ─────────────────────────────────────────────
 
 export const projects = [
+{
+    id:       'desinfo',
+    num:      '001',
+    category: 'python',
+    wip:      false,
+    image:    '/img/projects/desinfo.jpg',
+    fallback: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80',
+    gallery: [
+      { src: '/img/projects/desinfo-2.jpg', fb: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80' },
+      { src: '/img/projects/desinfo-3.jpg', fb: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&q=80' },
+      { src: '/img/projects/desinfo-4.jpg', fb: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=400&q=80' },
+    ],
+    github: 'https://github.com/Andre121314115/DesinfoAppV4.0',
+    demo:   null, // TODO: agregar link a Colab o demo si tienes
+    tags: [
+      { label: 'Python',       color: 'green'  },
+      { label: 'scikit-learn', color: 'purple' },
+      { label: 'Pandas',       color: 'purple' },
+      { label: 'NLP',          color: 'purple' },
+    ],
+    title:   { es: 'DesInfo — Fake News Detector', en: 'DesInfo — Fake News Detector' },
+    eyebrow: { es: '// 002 — PYTHON · MACHINE LEARNING', en: '// 002 — PYTHON · MACHINE LEARNING' },
+    desc: {
+      es: 'Sistema de clasificación automática de noticias falsas usando Machine Learning y Procesamiento de Lenguaje Natural en Python.',
+      en: 'Automatic fake news classification system using Machine Learning and Natural Language Processing in Python.',
+    },
+    features: {
+      es: [
+        'Clasificación de texto con scikit-learn (Naive Bayes / SVM)',
+        'Pipeline de preprocesamiento NLP: tokenización, stopwords y stemming',
+        'Evaluación del modelo con precisión, recall y F1-score',
+        'Dataset de noticias reales en español para entrenamiento',
+        // TODO: agrega aquí la métrica real — ej: 'Precisión del modelo: 87% en datos de prueba'
+      ],
+      en: [
+        'Text classification with scikit-learn (Naive Bayes / SVM)',
+        'NLP preprocessing pipeline: tokenization, stopwords and stemming',
+        'Model evaluation with precision, recall and F1-score',
+        'Real Spanish news dataset for training',
+      ],
+    },
+  },
+
   {
     id:       'zapastore',
-    num:      '001',
+    num:      '002',
     category: 'web',
     wip:      false,
     image:    '/img/projects/zapastore.jpg',
@@ -45,49 +88,6 @@ export const projects = [
         'Real-time inventory and stock control',
         'Web interface with HTML, CSS and Thymeleaf',
         'Relational database with SQL',
-      ],
-    },
-  },
-
-  {
-    id:       'desinfo',
-    num:      '002',
-    category: 'python',
-    wip:      false,
-    image:    '/img/projects/desinfo.jpg',
-    fallback: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80',
-    gallery: [
-      { src: '/img/projects/desinfo-2.jpg', fb: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80' },
-      { src: '/img/projects/desinfo-3.jpg', fb: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&q=80' },
-      { src: '/img/projects/desinfo-4.jpg', fb: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=400&q=80' },
-    ],
-    github: 'https://github.com/Andre121314115/DesinfoAppV4.0',
-    demo:   null, // TODO: agregar link a Colab o demo si tienes
-    tags: [
-      { label: 'Python',       color: 'green'  },
-      { label: 'scikit-learn', color: 'purple' },
-      { label: 'Pandas',       color: 'purple' },
-      { label: 'NLP',          color: 'purple' },
-    ],
-    title:   { es: 'DesInfo — Fake News Detector', en: 'DesInfo — Fake News Detector' },
-    eyebrow: { es: '// 002 — PYTHON · MACHINE LEARNING', en: '// 002 — PYTHON · MACHINE LEARNING' },
-    desc: {
-      es: 'Sistema de clasificación automática de noticias falsas usando Machine Learning y Procesamiento de Lenguaje Natural en Python.',
-      en: 'Automatic fake news classification system using Machine Learning and Natural Language Processing in Python.',
-    },
-    features: {
-      es: [
-        'Clasificación de texto con scikit-learn (Naive Bayes / SVM)',
-        'Pipeline de preprocesamiento NLP: tokenización, stopwords y stemming',
-        'Evaluación del modelo con precisión, recall y F1-score',
-        'Dataset de noticias reales en español para entrenamiento',
-        // TODO: agrega aquí la métrica real — ej: 'Precisión del modelo: 87% en datos de prueba'
-      ],
-      en: [
-        'Text classification with scikit-learn (Naive Bayes / SVM)',
-        'NLP preprocessing pipeline: tokenization, stopwords and stemming',
-        'Model evaluation with precision, recall and F1-score',
-        'Real Spanish news dataset for training',
       ],
     },
   },
