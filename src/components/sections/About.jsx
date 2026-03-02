@@ -95,13 +95,13 @@ export default function About() {
           </h3>
           <p data-fade data-delay="100" className="text-muted leading-loose mb-4 text-[0.95rem]">
             {lang === 'es'
-              ? 'Tengo 22 años y soy estudiante de Ingeniería de Sistemas e Informática en la Universidad Continental, actualmente en el décimo ciclo, con experiencia práctica en soporte de redes, desarrollo web y análisis de datos.'
-              : "I'm 22 years old, studying Systems Engineering at Universidad Continental, currently in my 10th semester, with hands-on experience in network support, web development and data analysis."}
+              ? 'Tengo 22 años, soy estudiante de Ingeniería de Sistemas e Informática en la Universidad Continental, actualmente en el décimo ciclo, con experiencia práctica en soporte de redes, desarrollo web y procesamiento y análisis de datos con Python.'
+              : "I'm 22 years old and currently a 10th-semester Systems Engineering student at Universidad Continental. I have hands-on experience in network support, web development, and data processing and analysis using Python"}
           </p>
           <p className="text-muted leading-loose mb-6 text-[0.95rem]">
             {lang === 'es'
-              ? 'He trabajado en configuración de equipos, monitoreo de redes y gestión de contenido IPTV en entorno empresarial. Desarrollo soluciones web con Java Spring y PHP, y aplico Python para análisis y Machine Learning. Busco integrarme como practicante o junior en el área de desarrollo o soporte TI para aportar soluciones eficientes y escalables.'
-              : 'I have worked on equipment configuration, network monitoring and IPTV content management in a business environment. I build web solutions with Java Spring and PHP, and apply Python for analysis and Machine Learning. Looking to join as an intern or junior in development or IT support to deliver efficient and scalable solutions.'}
+              ? 'Cuento con experiencia en configuración de equipos, monitoreo de redes y gestión de contenido IPTV en entornos empresariales. Desarrollo aplicaciones web con Java Spring y PHP, e integro Python y conceptos de Machine Learning para la automatización y mejora de procesos. Busco incorporarme como practicante o desarrollador junior en desarrollo o soporte TI, contribuyendo con soluciones eficientes, escalables y bien estructuradas.'
+              : 'I have experience in equipment configuration, network monitoring, and IPTV content management in enterprise environments. I develop web applications using Java Spring and PHP, and integrate Python and Machine Learning concepts to automate and optimize processes. I am seeking an internship or junior position in software development or IT support, contributing efficient, scalable, and well-structured solutions.'}
           </p>
 
           {/* Terminal */}
