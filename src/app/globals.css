@@ -8,9 +8,9 @@
 :root {
   --bg:      #f0f4ff;
   --surface: #ffffff;
-  --border:  #d0d8f0;
+  --border:  #c0cae8;
   --text:    #0f0f2e;
-  --muted:   #6070a0;
+  --muted:   #4a5880;
   --accent:  #00e5a0;
   --accent2: #a855f7;
 }
@@ -111,3 +111,65 @@ body {
   background-size: 200% 200%;
   animation: gradientShift 4s ease infinite;
 }
+
+/* ── BOTONES — transiciones ───────────────────────────── */
+a, button {
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── NAVBAR — sombra al hacer scroll ──────────────────── */
+.navbar-scrolled {
+  box-shadow: 0 1px 40px rgba(0, 229, 160, 0.05);
+}
+/* ── MICROINTERACCIONES ─────────────────────────────────── */
+
+/* Focus visible para accesibilidad */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Selección de texto */
+::selection {
+  background: rgba(0, 229, 160, 0.2);
+  color: var(--accent);
+}
+
+/* Transición global de imágenes */
+img {
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1),
+              filter 0.3s ease;
+}
+
+/* Tags / badges hover */
+.tag-item {
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+.tag-item:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Smooth reveal — usado por useScrollFade */
+[data-fade] {
+  will-change: opacity, transform;
+}
+
+/* Línea de progreso del carrusel */
+@keyframes progressBar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Keyframes del carrusel */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+

@@ -9,6 +9,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    // Sin clase dark aquí — page.jsx la agrega con useEffect
+    // para que el toggle funcione correctamente
     <html lang="es">
       <body className="bg-bg text-text font-sans antialiased">
         <LangProvider>

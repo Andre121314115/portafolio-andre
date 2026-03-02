@@ -133,7 +133,7 @@ export default function ProjectModal({ project, onClose }) {
   return (
     <>
       <div
-        className="fixed inset-0 z-[500] bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+        className="fixed inset-0 z-[500] bg-bg/80 backdrop-blur-xl flex items-center justify-center p-4"
         onClick={e => e.target === e.currentTarget && onClose()}
       >
         <div className="bg-surface border border-border w-full max-w-2xl max-h-[90vh] overflow-y-auto relative

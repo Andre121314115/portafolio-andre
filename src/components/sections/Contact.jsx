@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import SectionHeader from '@/components/ui/SectionHeader'
+import useScrollFade from '@/hooks/useScrollFade'
 import { useLang } from '@/context/LangContext'
 
 const MailIcon = () => (
@@ -35,14 +36,15 @@ const contactLinks = [
   { Icon: PhoneIcon,    href: 'tel:+51927535786',                                        label: '+51 927 535 786'            },
   { Icon: GithubIcon,   href: 'https://github.com/Andre121314115',                       label: 'github.com/Andre121314115',   target: '_blank' },
   { Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/andre-de-la-torre-segura20',  label: 'linkedin.com/in/andre-de-la-torre-segura20', target: '_blank' },
-  { Icon: PinIcon,      href: null,                                                      label: 'Concepción, Junín, Perú' },
+  { Icon: PinIcon,      href: null,                                                      label: 'Mito - Concepción, Junín, Perú' },
 ]
 
 // ⚠️ Reemplaza TU_ID_AQUI con tu ID de formspree.io
-const FORMSPREE_URL = 'https://formspree.io/f/mnjbykpy'
+const FORMSPREE_URL = 'https://formspree.io/f/TU_ID_AQUI'
 
 export default function Contact() {
   const { lang } = useLang()
+  const ref = useScrollFade()
   const [status, setStatus] = useState('idle')
   const [form,   setForm]   = useState({ nombre: '', email: '', mensaje: '' })
   const t = (es, en) => lang === 'es' ? es : en
@@ -69,13 +71,13 @@ export default function Contact() {
                       outline-none focus:border-accent transition-colors placeholder:text-muted`
 
   return (
-    <section id="contact" className="py-24 px-6 sm:px-16 bg-surface">
+    <section id="contact" ref={ref} className="py-24 px-6 sm:px-16 bg-surface">
       <SectionHeader num="07" title={t('Contacto', 'Contact')} />
 
       <div className="grid md:grid-cols-2 gap-16 items-start">
 
         {/* Info izquierda */}
-        <div>
+        <div data-fade data-delay="0">
           <h3 className="text-2xl font-bold mb-3">
             {t('¿Tienes algo en mente?', 'Have something in mind?')}
           </h3>
@@ -144,7 +146,7 @@ export default function Contact() {
         </div>
 
         {/* Formulario */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form data-fade data-delay="150" onSubmit={handleSubmit} className="flex flex-col gap-4">
 
           <div className="flex flex-col gap-1">
             <label className="font-mono text-[0.62rem] text-accent tracking-[3px] uppercase">

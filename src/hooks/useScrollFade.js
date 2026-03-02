@@ -2,10 +2,13 @@
 import { useEffect, useRef } from 'react'
 
 /**
- * Hook que aplica fade-up a los elementos hijos cuando entran en el viewport.
- * Uso: const ref = useScrollFade()  →  <div ref={ref}>...</div>
+ * Aplica fade-up suave a todos los elementos [data-fade] dentro del contenedor.
+ * Uso: const ref = useScrollFade()  →  <section ref={ref}>
+ *        Elemento hijo:              <div data-fade data-delay="100">...</div>
+ * 
+ * data-delay: retraso en ms (opcional, para escalonar animaciones)
  */
-export default function useScrollFade(threshold = 0.08) {
+export default function useScrollFade(threshold = 0.1) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -15,18 +18,21 @@ export default function useScrollFade(threshold = 0.08) {
     const targets = container.querySelectorAll('[data-fade]')
 
     targets.forEach(el => {
-      el.style.opacity   = '0'
-      el.style.transform = 'translateY(18px)'
-      el.style.transition = 'opacity 0.55s ease, transform 0.55s ease'
+      el.style.opacity    = '0'
+      el.style.transform  = 'translateY(22px)'
+      el.style.transition = `opacity 0.6s ease, transform 0.6s ease`
+      el.style.willChange = 'opacity, transform'
     })
 
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
+        if (!e.isIntersecting) return
+        const delay = e.target.dataset.delay || 0
+        setTimeout(() => {
           e.target.style.opacity   = '1'
           e.target.style.transform = 'translateY(0)'
-          obs.unobserve(e.target)
-        }
+        }, Number(delay))
+        obs.unobserve(e.target)
       })
     }, { threshold })
 

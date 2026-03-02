@@ -1,17 +1,19 @@
 'use client'
+import useScrollFade from '@/hooks/useScrollFade'
 import SectionHeader from '@/components/ui/SectionHeader'
 import { useLang } from '@/context/LangContext'
 import { learning } from '@/data/experience'
 
 export default function Learning() {
   const { lang } = useLang()
+  const ref = useScrollFade()
   return (
-    <section id="learning" className="py-24 px-6 sm:px-16 bg-bg">
+    <section id="learning" ref={ref} className="py-24 px-6 sm:px-16 bg-bg">
       <SectionHeader num="03" title={lang === 'es' ? 'Aprendiendo ahora' : 'Currently learning'} />
 
       <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
-        {learning.map(l => (
-          <div key={l.name}
+        {learning.map((l, idx) => (
+          <div data-fade data-delay={idx * 100} key={l.name}
                className="group border border-border bg-surface p-7 relative overflow-hidden
                           transition-all duration-300 hover:-translate-y-1
                           hover:border-accent2/40

@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import useScrollFade from '@/hooks/useScrollFade'
 import SectionHeader from '@/components/ui/SectionHeader'
 import { useLang } from '@/context/LangContext'
 
@@ -42,8 +43,9 @@ function Counter({ target }) {
 
 export default function About() {
   const { lang } = useLang()
+  const ref = useScrollFade()
   return (
-    <section id="about" className="py-24 px-6 sm:px-16 bg-surface">
+    <section id="about" ref={ref} className="py-24 px-6 sm:px-16 bg-surface">
       <SectionHeader num="01" title={lang === 'es' ? 'Sobre mí' : 'About me'} />
 
       <div className="grid md:grid-cols-[280px_1fr] gap-14 items-start">
@@ -88,10 +90,10 @@ export default function About() {
 
         {/* Texto */}
         <div>
-          <h3 className="text-2xl font-bold mb-4">
+          <h3 data-fade data-delay="0" className="text-2xl font-bold mb-4">
             {lang === 'es' ? 'Perfil' : 'Profile'}
           </h3>
-          <p className="text-muted leading-loose mb-4 text-[0.95rem]">
+          <p data-fade data-delay="100" className="text-muted leading-loose mb-4 text-[0.95rem]">
             {lang === 'es'
               ? 'Tengo 22 años y soy estudiante de Ingeniería de Sistemas e Informática en la Universidad Continental, actualmente en el décimo ciclo, con experiencia práctica en soporte de redes, desarrollo web y análisis de datos.'
               : "I'm 22 years old, studying Systems Engineering at Universidad Continental, currently in my 10th semester, with hands-on experience in network support, web development and data analysis."}
@@ -115,7 +117,7 @@ export default function About() {
               <span className="text-accent">❯</span> cat perfil.json
             </p>
             <div className="text-xs space-y-[3px] pl-2">
-              <p><span className="text-accent2">"ubicacion"</span><span className="text-border">:</span> <span className="text-accent">"Concepción, Junín, Perú"</span><span className="text-border">,</span></p>
+              <p><span className="text-accent2">"ubicacion"</span><span className="text-border">:</span> <span className="text-accent">"Mito - Concepción, Junín, Perú"</span><span className="text-border">,</span></p>
               <p><span className="text-accent2">"carrera"</span><span className="text-border">:</span>   <span className="text-accent">"Ing. Sistemas e Informática"</span><span className="text-border">,</span></p>
               <p><span className="text-accent2">"objetivo"</span><span className="text-border">:</span>  <span className="text-accent">"Junior dev / Practicante TI"</span><span className="text-border">,</span></p>
               <p><span className="text-accent2">"disponible"</span><span className="text-border">:</span> <span className="text-accent">true</span><span className="text-border">,</span></p>
