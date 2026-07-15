@@ -404,11 +404,18 @@
     border:1px solid var(--line-strong);background:rgba(12,7,7,0.75);color:var(--cream);
     display:flex;align-items:center;justify-content:center;cursor:pointer;
     transition:border-color .2s ease,color .2s ease;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;
   }
   .lightbox-nav:hover{border-color:var(--accent);color:var(--accent);}
   .lightbox-nav svg{width:18px;height:18px;}
   .lightbox-prev{left:10px;}
   .lightbox-next{right:10px;}
+  @media(max-width:600px){
+    .lightbox-nav{width:48px;height:48px;}
+    .lightbox-nav svg{width:22px;height:22px;}
+    .lightbox-prev{left:6px;}
+    .lightbox-next{right:6px;}
+  }
   .lightbox-dots{display:flex;gap:6px;}
   .lightbox-dots span{width:6px;height:6px;border-radius:50%;background:var(--line-strong);}
   .lightbox-dots span.active{background:var(--accent);}
@@ -748,10 +755,10 @@
       </div>
       <div class="lightbox-frame">
         <img id="lightbox-img" src="" alt="">
-        <div class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">
+        <div class="lightbox-nav lightbox-prev" onclick="event.stopPropagation();navLightbox(-1)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </div>
-        <div class="lightbox-nav lightbox-next" onclick="navLightbox(1)">
+        <div class="lightbox-nav lightbox-next" onclick="event.stopPropagation();navLightbox(1)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </div>
       </div>
@@ -1101,6 +1108,21 @@
     if(e.key === 'ArrowLeft') navLightbox(-1);
     if(e.key === 'ArrowRight') navLightbox(1);
   });
+
+  // swipe táctil para móvil
+  let touchStartX = 0, touchStartY = 0;
+  const lightboxFrame = lightboxEl.querySelector('.lightbox-frame');
+  lightboxFrame.addEventListener('touchstart', (e)=>{
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, {passive:true});
+  lightboxFrame.addEventListener('touchend', (e)=>{
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40){
+      navLightbox(dx < 0 ? 1 : -1);
+    }
+  }, {passive:true});
 
   // scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
