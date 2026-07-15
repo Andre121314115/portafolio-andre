@@ -22,6 +22,19 @@
     --line-strong:rgba(242,232,216,0.22);
     --radius:14px;
   }
+  [data-theme="light"]{
+    --bg:#faf7f2;
+    --bg-panel:#f0ebe1;
+    --bg-panel-2:#e6dfd3;
+    --cream:#1c1010;
+    --cream-dim:#3a2a2a;
+    --muted:#7a6560;
+    --accent:#c22a34;
+    --accent-2:#9e2128;
+    --accent-glow:rgba(194,42,52,0.18);
+    --line:rgba(28,16,16,0.1);
+    --line-strong:rgba(28,16,16,0.2);
+  }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
@@ -80,6 +93,17 @@
   .topbar .status{display:flex;align-items:center;gap:8px;color:var(--cream-dim);}
   .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:pulse 1.8s ease-in-out infinite;}
   @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .theme-toggle{
+    background:none;border:1px solid var(--line-strong);border-radius:30px;
+    padding:5px 12px;cursor:pointer;
+    display:flex;align-items:center;gap:6px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
+    color:var(--muted);text-transform:uppercase;
+    transition:border-color .2s ease,color .2s ease,background .2s ease;
+  }
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);background:rgba(194,42,52,0.07);}
+  .theme-toggle svg{width:13px;height:13px;flex-shrink:0;transition:transform .4s ease;}
+  .theme-toggle:hover svg{transform:rotate(20deg);}
 
   /* ---------- hero ---------- */
   .hero{position:relative;padding:18px 0 70px;overflow:hidden;}
@@ -503,6 +527,10 @@
   <header class="topbar">
     <span>PORTAFOLIO PROFESIONAL</span>
     <span class="status"><i class="dot"></i>EN BÚSQUEDA DE EMPLEO</span>
+    <button class="theme-toggle" id="themeToggle" title="Cambiar tema" aria-label="Cambiar tema">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <span id="themeLabel">CLARO</span>
+    </button>
   </header>
 
   <section class="hero">
@@ -1086,6 +1114,35 @@
   } else {
     revealEls.forEach(el=>el.classList.add('in'));
   }
+
+  // theme toggle
+  const toggleBtn = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const themeLabel = document.getElementById('themeLabel');
+  const moonSVG = `<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>`;
+  const sunSVG = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
+
+  function applyTheme(theme){
+    if(theme === 'light'){
+      document.documentElement.setAttribute('data-theme','light');
+      themeIcon.innerHTML = sunSVG;
+      themeLabel.textContent = 'OSCURO';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      themeIcon.innerHTML = moonSVG;
+      themeLabel.textContent = 'CLARO';
+    }
+  }
+
+  const saved = localStorage.getItem('theme') || 'dark';
+  applyTheme(saved);
+
+  toggleBtn.addEventListener('click', ()=>{
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  });
 </script>
 </body>
 </html>
